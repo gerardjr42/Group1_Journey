@@ -294,21 +294,39 @@ export function PageJs() {
           id="project-management"
           className="section min-h-screen flex flex-col justify-center items-center p-8"
         >
-          <h2 className="text-5xl font-bold mb-4 text-center prose">
-            Project Management
-          </h2>
-          <p className="text-xl max-w-2xl text-center italic">
-            Efficiently coordinating tasks and timelines to ensure smooth
-            project execution.
-          </p>
-          <p className="text-xl max-w-2xl text-center mt-4">
-            As a team, we have chosen to streamline our Product Management
-            process with Jira. This tool will enable us to implement the SCRUM
-            agile methodology, allowing us to create tickets and issues, set
-            deadlines, maintain Confluence documentation, and centralize all our
-            resources. By focusing on sprints, we aim to keep deadlines on track
-            and work towards our unified goals.
-          </p>
+          <div className="w-full max-w-6xl">
+            <h2 className="text-5xl font-bold mb-4 text-center">
+              Project Management
+            </h2>
+            <p className="text-xl max-w-2xl mx-auto italic mb-12 text-center">
+              Efficiently coordinating tasks and timelines to ensure smooth
+              project execution.
+            </p>
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+              <div className="md:w-1/2 prose">
+                <p className="text-xl mb-4 prose">
+                  As a team, we have chosen to streamline our Product Management
+                  process with Jira. This tool will enable us to implement the
+                  SCRUM agile methodology, allowing us to create tickets and
+                  issues, set deadlines, maintain Confluence documentation, and
+                  centralize all our resources.
+                </p>
+                <p className="text-xl prose">
+                  By focusing on sprints, we aim to keep deadlines on track and
+                  work towards our unified goals.
+                </p>
+              </div>
+              <div className="md:w-1/2">
+                <Image
+                  src="/images/jira_board.png"
+                  alt="Jira Board"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto"
+                />
+              </div>
+            </div>
+          </div>
         </section>
 
         <section
