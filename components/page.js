@@ -52,7 +52,7 @@ export function PageJs() {
 
   useEffect(() => {
     const startTime = Date.now();
-    const totalDuration = 3000; // 3 seconds
+    const totalDuration = 1500; // 1.5 seconds
 
     const timer = setInterval(() => {
       const elapsedTime = Date.now() - startTime;
@@ -96,34 +96,34 @@ export function PageJs() {
     }
   };
 
-  // if (loading) {
-  //   return (
-  //     <div className="min-h-screen bg-[#FAE9DA] flex flex-col items-center justify-center">
-  //       <style jsx global>{`
-  //         @keyframes spin {
-  //           0% {
-  //             transform: rotate(0deg);
-  //           }
-  //           100% {
-  //             transform: rotate(360deg);
-  //           }
-  //         }
-  //       `}</style>
-  //       <div className="w-32 h-32 bg-[#FF6B6B] rounded-full flex items-center justify-center mb-8 animate-[spin_1.5s_linear_infinite]">
-  //         <span className="text-white font-bold text-4xl">G1</span>
-  //       </div>
-  //       <div className="w-64 h-4 bg-white rounded-full overflow-hidden">
-  //         <div
-  //           className="h-full bg-[#FF6B6B] transition-all duration-100 ease-out"
-  //           style={{ width: `${loadingProgress}%` }}
-  //         ></div>
-  //       </div>
-  //       <p className="mt-4 text-xl font-semibold">
-  //         Loading... {loadingProgress}%
-  //       </p>
-  //     </div>
-  //   );
-  // }
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#FAE9DA] flex flex-col items-center justify-center">
+        <style jsx global>{`
+          @keyframes spin {
+            0% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(360deg);
+            }
+          }
+        `}</style>
+        <div className="w-32 h-32 bg-[#FF6B6B] rounded-full flex items-center justify-center mb-8 animate-[spin_1.5s_linear_infinite]">
+          <span className="text-white font-bold text-4xl">G1</span>
+        </div>
+        <div className="w-64 h-4 bg-white rounded-full overflow-hidden">
+          <div
+            className="h-full bg-[#FF6B6B] transition-all duration-100 ease-out"
+            style={{ width: `${loadingProgress}%` }}
+          ></div>
+        </div>
+        <p className="mt-4 text-xl font-semibold">
+          Loading... {loadingProgress}%
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#FAE9DA] text-[#333] font-sans overflow-hidden">
@@ -298,13 +298,17 @@ export function PageJs() {
             <h2 className="text-5xl font-bold mb-4 text-center">
               Project Management
             </h2>
-            <p className="text-xl max-w-2xl mx-auto italic mb-12 text-center">
+            <p className="text-xl max-w-2xl mx-auto italic mb-24 text-center">
               Efficiently coordinating tasks and timelines to ensure smooth
               project execution.
             </p>
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+            {/* Jira */}
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-8 mb-24">
               <div className="md:w-1/2 prose">
-                <p className="text-xl mb-4 prose">
+                <p className="text-3xl font-bold text-center prose mb-0">
+                  Jira
+                </p>
+                <p className="text-xl mb-4 prose mt-4">
                   As a team, we have chosen to streamline our Product Management
                   process with Jira. This tool will enable us to implement the
                   SCRUM agile methodology, allowing us to create tickets and
@@ -324,6 +328,33 @@ export function PageJs() {
                   height={400}
                   className="w-full h-auto"
                 />
+              </div>
+            </div>
+            {/* Group Norms */}
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+              <div className="md:w-1/2 prose">
+                <p className="text-3xl font-bold text-center prose mb-0">
+                  Group Norms
+                </p>
+                <p className="text-xl mb-4 prose mt-4">
+                  Group norms are essential for fostering a productive and
+                  harmonious team environment. They help set clear expectations,
+                  promote effective communication, and ensure that everyone is
+                  aligned towards common goals.
+                </p>
+                <p className="text-xl prose">
+                  Adhering to these norms will enable us to work efficiently,
+                  support each other, and achieve our objectives successfully.
+                </p>
+              </div>
+              <div className="md:w-1/2 mt-[50px]">
+                <ul className="list-disc pl-5 text-xl prose">
+                  <li>Act Professionally</li>
+                  <li>Stay Organized</li>
+                  <li>Open Communication</li>
+                  <li>Seek Support</li>
+                  <li>Embrace Feedback</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -347,7 +378,7 @@ export function PageJs() {
           className="section min-h-screen flex flex-col justify-center items-center p-8"
         >
           <h2 className="text-5xl font-bold mb-4 text-center prose">
-            Market Research & Analysis
+            User & Market Research
           </h2>
           <p className="text-xl max-w-2xl text-center">
             Gathering and interpreting data to inform strategic decisions and
