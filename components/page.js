@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -30,6 +31,19 @@ const teamMembers = [
       "https://ca.slack-edge.com/TCVA3PF24-U064W1APKS4-be83538ebf43-512",
   },
 ];
+
+const teamMemberVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (index) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.6 + index * 0.1,
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  }),
+};
 
 export function PageJs() {
   const [loading, setLoading] = useState(true);
@@ -230,33 +244,51 @@ export function PageJs() {
         </nav>
       </header>
       <main className="">
-        <section className="min-h-screen  flex flex-col justify-center items-center p-8 animate-fadeInUp">
-          <h1 className="text-7xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#FF6B6B] to-[#4ECDC4]">
+        <section className="min-h-screen flex flex-col justify-center items-center p-8">
+          <motion.h1
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-7xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#FF6B6B] to-[#4ECDC4]"
+          >
             Welcome!
-          </h1>
-          <div className="flex justify-center items-end space-x-8 mb-12">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            className="mb-12 italic text-2xl"
+          >
+            Innovating together to create impactful solutions and drive success.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+            className="flex justify-center items-end space-x-8"
+          >
             {teamMembers.map((member, index) => (
-              <div
+              <motion.div
                 key={member.name}
+                variants={teamMemberVariants}
+                initial="hidden"
+                animate="visible"
+                custom={index}
                 className="text-center"
-                style={{ "--index": index }}
               >
                 <div className="w-20 h-20 bg-[#FF6B6B] rounded-full flex items-center justify-center mb-2 team-member overflow-hidden">
                   <Image
                     src={member.photoSrc}
-                    alt={`${member.photoSrc}'s profile picture`}
+                    alt={`${member.name}'s profile picture`}
                     width={80}
                     height={80}
                     className="object-cover"
                   />
                 </div>
                 <p className="font-semibold">{member.name}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
-          <p>
-            Innovating together to create impactful solutions and drive success.
-          </p>
+          </motion.div>
         </section>
         <section
           id="project-management"
