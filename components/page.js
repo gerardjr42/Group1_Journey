@@ -1,6 +1,35 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+
+const teamMembers = [
+  {
+    name: "Alex",
+    photoSrc:
+      "https://ca.slack-edge.com/TCVA3PF24-U0646TW264B-dde2addf28b2-512",
+  },
+  {
+    name: "Eric",
+    photoSrc:
+      "https://ca.slack-edge.com/TCVA3PF24-U06471DTBDY-08b366aced14-512",
+  },
+  {
+    name: "Lynnette",
+    photoSrc:
+      "https://ca.slack-edge.com/TCVA3PF24-U063SF3T8QP-18065f45177e-512",
+  },
+  {
+    name: "Mike",
+    photoSrc:
+      "https://ca.slack-edge.com/TCVA3PF24-U0649EJ0UDS-a1b8cec07d0e-512",
+  },
+  {
+    name: "Gerardo",
+    photoSrc:
+      "https://ca.slack-edge.com/TCVA3PF24-U064W1APKS4-be83538ebf43-512",
+  },
+];
 
 export function PageJs() {
   const [loading, setLoading] = useState(true);
@@ -53,34 +82,34 @@ export function PageJs() {
     }
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-[#FAE9DA] flex flex-col items-center justify-center">
-        <style jsx global>{`
-          @keyframes spin {
-            0% {
-              transform: rotate(0deg);
-            }
-            100% {
-              transform: rotate(360deg);
-            }
-          }
-        `}</style>
-        <div className="w-32 h-32 bg-[#FF6B6B] rounded-full flex items-center justify-center mb-8 animate-[spin_1.5s_linear_infinite]">
-          <span className="text-white font-bold text-4xl">G1</span>
-        </div>
-        <div className="w-64 h-4 bg-white rounded-full overflow-hidden">
-          <div
-            className="h-full bg-[#FF6B6B] transition-all duration-100 ease-out"
-            style={{ width: `${loadingProgress}%` }}
-          ></div>
-        </div>
-        <p className="mt-4 text-xl font-semibold">
-          Loading... {loadingProgress}%
-        </p>
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <div className="min-h-screen bg-[#FAE9DA] flex flex-col items-center justify-center">
+  //       <style jsx global>{`
+  //         @keyframes spin {
+  //           0% {
+  //             transform: rotate(0deg);
+  //           }
+  //           100% {
+  //             transform: rotate(360deg);
+  //           }
+  //         }
+  //       `}</style>
+  //       <div className="w-32 h-32 bg-[#FF6B6B] rounded-full flex items-center justify-center mb-8 animate-[spin_1.5s_linear_infinite]">
+  //         <span className="text-white font-bold text-4xl">G1</span>
+  //       </div>
+  //       <div className="w-64 h-4 bg-white rounded-full overflow-hidden">
+  //         <div
+  //           className="h-full bg-[#FF6B6B] transition-all duration-100 ease-out"
+  //           style={{ width: `${loadingProgress}%` }}
+  //         ></div>
+  //       </div>
+  //       <p className="mt-4 text-xl font-semibold">
+  //         Loading... {loadingProgress}%
+  //       </p>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="min-h-screen bg-[#FAE9DA] text-[#333] font-sans overflow-hidden">
@@ -200,15 +229,43 @@ export function PageJs() {
           </ul>
         </nav>
       </header>
-      <main className="pt-24">
+      <main className="">
+        <section className="min-h-screen  flex flex-col justify-center items-center p-8 animate-fadeInUp">
+          <h1 className="text-7xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#FF6B6B] to-[#4ECDC4]">
+            Welcome!
+          </h1>
+          <div className="flex justify-center items-end space-x-8 mb-12">
+            {teamMembers.map((member, index) => (
+              <div
+                key={member.name}
+                className="text-center"
+                style={{ "--index": index }}
+              >
+                <div className="w-20 h-20 bg-[#FF6B6B] rounded-full flex items-center justify-center mb-2 team-member overflow-hidden">
+                  <Image
+                    src={member.photoSrc}
+                    alt={`${member.photoSrc}'s profile picture`}
+                    width={80}
+                    height={80}
+                    className="object-cover"
+                  />
+                </div>
+                <p className="font-semibold">{member.name}</p>
+              </div>
+            ))}
+          </div>
+          <p>
+            Innovating together to create impactful solutions and drive success.
+          </p>
+        </section>
         <section
           id="project-management"
           className="section min-h-screen flex flex-col justify-center items-center p-8"
         >
-          <h2 className="text-4xl font-bold mb-4 text-center">
-            Organization & Project Management
+          <h2 className="text-5xl font-bold mb-4 text-center prose">
+            Project Management
           </h2>
-          <p className="text-xl max-w-2xl text-center">
+          <p className="text-xl max-w-2xl text-center italic">
             Efficiently coordinating tasks and timelines to ensure smooth
             project execution.
           </p>
@@ -226,7 +283,9 @@ export function PageJs() {
           id="ideation"
           className="section min-h-screen flex flex-col justify-center items-center p-8"
         >
-          <h2 className="text-4xl font-bold mb-4 text-center">Ideation</h2>
+          <h2 className="text-5xl font-bold mb-4 text-center prose">
+            Ideation
+          </h2>
           <p className="text-xl max-w-2xl text-center">
             Brainstorming innovative solutions and creative approaches to
             problem-solving.
@@ -237,7 +296,7 @@ export function PageJs() {
           id="research"
           className="section min-h-screen flex flex-col justify-center items-center p-8"
         >
-          <h2 className="text-4xl font-bold mb-4 text-center">
+          <h2 className="text-5xl font-bold mb-4 text-center prose">
             Market Research & Analysis
           </h2>
           <p className="text-xl max-w-2xl text-center">
@@ -250,7 +309,7 @@ export function PageJs() {
           id="design"
           className="section min-h-screen flex flex-col justify-center items-center p-8"
         >
-          <h2 className="text-4xl font-bold mb-4 text-center">Design</h2>
+          <h2 className="text-5xl font-bold mb-4 text-center prose">Design</h2>
           <p className="text-xl max-w-2xl text-center">
             Crafting compelling narratives and visuals to showcase our ideas and
             value proposition.
